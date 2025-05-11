@@ -1,0 +1,76 @@
+/* General Form Styling */
+.section-inner {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Input Fields */
+.form-control {
+    display: flex;
+    padding: 30px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Textarea */
+textarea.form-control {
+    height: 120px;
+    width: 400px;
+}
+
+.form-group{
+  width: 400px;
+
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 70%;
+    
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Centering Button */
+.text-center {
+    text-align: center;
+}
+
+
+
+/* Message Box Styling */
+.display_message {
+    position: relative;
+    background-color: #f9f9f9; 
+    color: #333; 
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 500px;
+    margin: 10px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.display_message i:hover {
+    color: #b71c1c;
+}
