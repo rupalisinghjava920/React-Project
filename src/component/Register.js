@@ -1,28 +1,44 @@
 import React, { useState } from 'react';
 import { Button,Container,Form,FormGroup,Input,Label,Row,Col, Card} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 
 function Register() {
   const [className, setClassName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const validatePassword = (password) => {
+  const passwordRegex = /^[A-Z](?=.*[!@#$%^&*])(?=.*\d).{7,}$/;
+  return passwordRegex.test(password);
+};
+
+  const navigate = useNavigate(); 
+
+  const handleSignup = (e) => {
     e.preventDefault();
+
+     if (!validatePassword(password)) {
+      setError("Password must start with a capital letter, contain at least one number, one special character, and be at least 8 characters long.");
+      return;
+    }
+
+    setError("");
     console.log('Name:', className);
     console.log('Email:', email);
     console.log('Password:', password);
-    alert('Register Successfully!');
+     navigate('/login');
   };
 
   return (
+    <div className="login-wrapper">
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col md={6} lg={6}>
-        <Card className='shadow p-3'>
+        <Card className='shadow p-3 login-card'>
           <h2 className="text-center mb-4">Sign Up</h2>
-          <Form onSubmit={handleSubmit}>
-
+          {/* <Form onSubmit={handleSubmit}> */}
+         <Form>
           <FormGroup>
               <Label for="name" className="fw-bold text-start d-block">Name</Label>
               <Input
@@ -53,10 +69,15 @@ function Register() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </FormGroup>
+              {password && !validatePassword(password) && (
+                <div style={{ color: 'red', fontSize: '14px' }}>
+                  {error}
+                </div>
+              )}
+                        </FormGroup>
 
             <Container className="text-center mt-3">
-              <Button color="primary" type="submit">Sign up</Button>
+              <Button color="primary" type="submit" onClick={handleSignup}>Sign up</Button>
               <Link to="/login" className='no-underline'> Already have an account? Login</Link>
             </Container>
           </Form>
@@ -64,6 +85,7 @@ function Register() {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 }
 

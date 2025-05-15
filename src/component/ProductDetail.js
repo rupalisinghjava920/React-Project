@@ -1,13 +1,15 @@
 import React from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 function ProductDetail() {
   const productData = {
-    name: "Burger Stock",
+    name: "Namkin",
     price: "$500",
-    weight: "500g",
-    description: "A delicious Burger stock with creamy layers.",
-    image: process.env.PUBLIC_URL + "/images/Burger stock.jpeg",
+    quantity:"2",
+    weight: "500kg",
+    description: "A crunchy and savory namkin snack, perfectly seasoned for a delightful tea-time treat.",
+    image: process.env.PUBLIC_URL + "/images/1.png",
   };
 
   const productList = [
@@ -36,29 +38,36 @@ function ProductDetail() {
   ];
 
   return (
+     <div className="login-wrapper">
     <Container className="mt-5">
       {/* Product Detail Section */}
-      <Card className="shadow mb-5" style={{ width: '100%', margin: '0 auto' }}>
+      <Card className="shadow mb-5 login-card " style={{ width: '100%', margin: '0 auto' ,height: "440px"}}>
         <Row className="g-0">
           <Col md={6}>
-            <Card.Img variant="top" src={productData.image} style={{ height: '100%'}} />
+            <Card.Img variant="top" src={productData.image} style={{ height: '70%'}} />
           </Col>
           <Col md={6}>
             <Card.Body style={{ margin: '50px'}}>
               <Card.Title style={{ color: 'red' }}>{productData.name}</Card.Title>
               <Card.Text>
                 <strong>Price:</strong> {productData.price}<br />
+                <strong>Quantity:</strong> {productData.quantity}<br />
                 <strong>Weight:</strong> {productData.weight}<br />
                 <strong>Description:</strong> {productData.description}
               </Card.Text>
               <div className="mt-5">
-                <button className="btn btn-sm btn-primary me-3">Add Product</button>
-                <button className="btn btn-sm btn-danger">Continue Shopping</button>
+                <Link to={"/productCard"}>
+                  <button className="btn btn-sm btn-primary me-3">Add Product</button>
+                </Link>
+                <Link to={"/"}>
+                  <button className="btn btn-sm btn-danger">Continue Shopping</button>
+                </Link>
               </div>
             </Card.Body>
           </Col>
         </Row>
       </Card>
+      
 
       {/* Related Products Section */}
       <h4 className="mb-5 mt-5 text-start">Related Products</h4>
@@ -82,6 +91,7 @@ function ProductDetail() {
         ))}
       </Row>
     </Container>
+    </div>
   );
 }
 
