@@ -1,4 +1,4 @@
-import React,{useContext } from "react";
+import {useContext } from "react";
 import { Navbar, Nav, Container, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";

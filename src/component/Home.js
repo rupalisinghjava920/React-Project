@@ -1,6 +1,6 @@
 
-import React, { useState,useContext  } from 'react';
-import { Card, Container, Row, Col, Button, Badge } from 'react-bootstrap';
+import  { useContext  } from 'react';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import { CartContext } from "../context/CartContext";
 
 function Home() {
