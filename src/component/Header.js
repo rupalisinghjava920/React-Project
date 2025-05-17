@@ -1,10 +1,10 @@
-import {useContext } from "react";
+import { useContext } from "react";
 import { Navbar, Nav, Container, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 function Header() {
-    const { cartCount } = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container className="d-flex justify-content-between align-items-center">
@@ -18,9 +18,12 @@ function Header() {
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
             <Nav.Link as={Link} to="/sign-up">Sign Up</Nav.Link>
           </Nav>
-          <div style={{ color: "white" }}>
-            Cart :<Badge bg="">{cartCount}</Badge>
-          </div>
+          <Nav.Link as={Link} to="/cart" className="d-flex align-items-center">
+            <span style={{ color: 'white', marginRight: '5px' }}>Cart :</span>
+            <Badge bg="">{cartCount}</Badge>
+          </Nav.Link>
+
+
         </Navbar.Collapse>
       </Container>
     </Navbar>

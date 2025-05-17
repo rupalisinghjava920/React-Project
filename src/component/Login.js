@@ -44,6 +44,7 @@ function Login() {
                       type="email"
                       id="email"
                       placeholder="Enter email" required
+                      // pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />

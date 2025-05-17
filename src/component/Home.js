@@ -4,9 +4,11 @@ import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import { CartContext } from "../context/CartContext";
 
 function Home() {
-const { cartCount, setCartCount } = useContext(CartContext);
+// const { cartCount, setCartCount } = useContext(CartContext);
+ const { addToCart } = useContext(CartContext);
 
   const products = [
+
     {
       name: "Furit Chocolate Cake",
       price: "$500",
@@ -98,10 +100,6 @@ const { cartCount, setCartCount } = useContext(CartContext);
     },
   ];
 
-  const handleAddToCart = () => {
-     setCartCount(cartCount + 1);  
-  };
-
   return (
     <div className="login-wrapper">
 
@@ -111,17 +109,11 @@ const { cartCount, setCartCount } = useContext(CartContext);
             <Col key={index} md={4} lg={3} sm={6} xs={12} className="mb-4">
               <Card className="shadow-sm login-card" style={{ height: '100%' }}>
                 <Card.Img
-                  variant="top"
-                  src={product.image}
-                  style={{ height: '150px' }}
-                />
+                  variant="top"  src={product.image} style={{ height: '150px' }}/>
                 <Card.Body>
                   <Card.Title style={{ color: 'red' }}>{product.name}</Card.Title>
                   <Card.Text><strong>Price:</strong> {product.price}</Card.Text>
-                  <Button
-                    variant="danger"
-                    onClick={handleAddToCart} 
-                  >
+                   <Button variant="danger" onClick={() => addToCart(product)}>
                     Add to Cart
                   </Button>
                 </Card.Body>

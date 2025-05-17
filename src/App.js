@@ -11,6 +11,7 @@ import ProductCard from './component/ProductCard';
 import ProductListing from './component/ProductListing';
 import ProductDetail from './component/ProductDetail';
 import { useState } from 'react';
+import Cart from './component/Cart';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/productDetail" element={<ProductDetail />} />
             <Route path='/sign-up' element={<Register />}></Route>
             <Route path='/login' element={<Login />}></Route>
+             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
         </div>

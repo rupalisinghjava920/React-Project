@@ -56,8 +56,8 @@ function ProductDetail() {
                 <strong>Description:</strong> {productData.description}
               </Card.Text>
               <div className="mt-5">
-                <Link to={"/productCard"}>
-                  <button className="btn btn-sm btn-primary me-3">Add Product</button>
+                <Link to={"/cart"}>
+                  <button className="btn btn-sm btn-success me-3">Add Cart</button>
                 </Link>
                 <Link to={"/"}>
                   <button className="btn btn-sm btn-danger">Continue Shopping</button>
