@@ -1,9 +1,6 @@
 package com.security1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CartItem {
@@ -11,9 +8,15 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-    private Long productId;
     private int quantity;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id",nullable = false)
+//    private User user;
+
+    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     public Long getId() {
         return id;
@@ -31,12 +34,20 @@ public class CartItem {
         this.userId = userId;
     }
 
-    public Long getProductId() {
-        return productId;
+    //    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -47,11 +58,13 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public CartItem(Long id, Long userId, Long productId, int quantity) {
+    public CartItem(Long id, Long user, Product product, int quantity) {
         this.id = id;
-        this.userId = userId;
-        this.productId = productId;
+        this.userId= userId;
+        this.product = product;
         this.quantity = quantity;
     }
+
+    public CartItem(){}
 }
 

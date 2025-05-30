@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -86,16 +87,14 @@ public class HomeController {
     }
 
 
-
-
-    @GetMapping("/add-product")
-    public String getDashboard()
-    {
-        return " this add product";
+    @GetMapping("/getUserById/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
-    @GetMapping("/")
-    public String getProfile()
-    {
-        return " this Home";
-    }
+
 }

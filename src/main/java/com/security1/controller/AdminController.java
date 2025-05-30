@@ -1,6 +1,8 @@
 package com.security1.controller;
 
 import com.security1.model.Product;
+import com.security1.model.User;
+import com.security1.repository.UserRepository;
 import com.security1.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,12 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class AdminController {
 
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private ProductService productService;
 
@@ -61,6 +66,12 @@ public class AdminController {
         return ResponseEntity.ok(updatedProduct);
     }
 
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Optional<Product> product = productService.getProductById(id);
+        return product.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
@@ -71,5 +82,8 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product.");
         }
     }
+
+
+
 
 }
