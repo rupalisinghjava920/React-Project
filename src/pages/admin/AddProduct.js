@@ -69,8 +69,10 @@ function AddProduct() {
                 <Input type="textarea" onChange={(e) => setProduct({ ...product, description: e.target.value })} required />
               </FormGroup>
               <FormGroup>
-                <Label>Image</Label>
-                <Input type="file" onChange={(e) => setImage(e.target.files[0])} required />
+                <Label>Image (Choose Only jpg image)</Label>
+                 <img src={`http://localhost:8080/uploads/${product.imageName}`} alt="Product" 
+    style={{ height: "150px", objectFit: "cover" }} />
+                <Input type="file"  accept=".jpg,.jpeg,.png"  onChange={(e) => setImage(e.target.files[0])} required />
               </FormGroup>
               <div className="text-center">
                 <Button color="primary" type="submit" className='me-5'>Add Product</Button>
