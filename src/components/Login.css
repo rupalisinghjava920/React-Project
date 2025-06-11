@@ -1,0 +1,27 @@
+.forgot-password{
+    text-align: end;
+    margin-bottom: 10px;
+}
+
+.no-underline{
+   text-decoration: none !important;
+}
+
+.input-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.custom-input {
+  background-color: rgb(247, 240, 240) !important;
+  color: #222 !important;
+  border: 2px solid #a3bad4 !important;
+}
+
+.custom-input:focus {
+  background-color: #ffffff !important;
+  border-color: #080808 !important;
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.5) !important;
+}
